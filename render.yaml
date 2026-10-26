@@ -10,6 +10,27 @@ services:
         fromDatabase:
           name: groupdrive-db
           property: connectionString
+      # Staging-safe defaults. Moving to APP_ENV=production needs a real SMS sender and payment aggregator
+      # (the app refuses to start in production with the console OTP sender or the fake gateway).
+      - key: APP_ENV
+        value: staging
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PAYMENT_WEBHOOK_SECRET
+        generateValue: true
+      - key: TRUST_PROXY
+        value: "true"
+      - key: ADMIN_PHONES
+        sync: false # owner enters their own number(s) in the Render dashboard
+  # Scheduled campaign close. Cron services are not on Render's free plan, so this is commented out;
+  # enable it (or run `python -m app.jobs close-due` daily from any scheduler) when you go live.
+  # - type: cron
+  #   name: groupdrive-close-due
+  #   runtime: docker
+  #   plan: starter
+  #   schedule: "30 18 * * *"   # 00:00 IST
+  #   dockerCommand: python -m app.jobs close-due
+  #   envVars: [same as the web service]
 databases:
   - name: groupdrive-db
     plan: free
