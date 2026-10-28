@@ -8,7 +8,8 @@
 ## Phase 1 - First campaign (weeks 5-10)
 - Campaign, join, offer and close flows (this repo's backend)
 - Manual dealer outreach
-- Deposit via payment aggregator
+- Deposit via payment aggregator (backend side done behind an interface; aggregator integration is an owner action)
+- Authentication, migrations, delivery tracking and success-fee records (done, see 03-architecture.md)
 
 ## Phase 2 - Repeat (months 3-6)
 - Dealer dashboard, buyer app, notifications

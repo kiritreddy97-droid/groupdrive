@@ -11,6 +11,9 @@ services:
     build: .
     environment:
       DATABASE_URL: postgresql://app:app@db:5432/app
+      APP_ENV: dev
+      ADMIN_PHONES: "9999999999"
+      PAYMENT_WEBHOOK_SECRET: dev-only-webhook-secret
     ports: ["8000:8000"]
     depends_on: [db]
 volumes:

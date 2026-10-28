@@ -6,7 +6,8 @@
 - Dealer onboarding and bidding after threshold
 - Best-offer comparison (discount + freebies)
 - Close: winner or full refund
-- Delivery tracking and success-fee reconciliation (phase 2)
+- Delivery tracking and success-fee record per delivered car (implemented in the backend; dealer/buyer UIs and invoicing are phase 2)
+- OTP login for buyers, dealer and admin logins, buyer opt-in before contact details reach the winning dealer
 
 ## Personas
 - First-time and upgrade car buyers in metros and tier-2 cities
@@ -17,7 +18,7 @@
 - Native mobile apps (web first), advanced analytics, internationalisation.
 
 ## Acceptance
-- Every rule in `backend/app/services.py` has tests in `backend/tests/`.
+- Every rule in `backend/app/services.py` has tests in `backend/tests/`, and API tests cover auth failures and the full campaign lifecycle.
 - `/health` responds and the API deploys from the Dockerfile.
 - Pricing and legal pages are reviewed against `05-legal-compliance.md` before real users are onboarded.
 
